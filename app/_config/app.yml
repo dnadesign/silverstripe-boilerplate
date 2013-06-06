@@ -3,4 +3,4 @@ Name: app
 After: "*"
 ---
 Email:
-	admin_email: youremail@site.com
+  admin_email: youremail@site.com
