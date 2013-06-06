@@ -50,17 +50,22 @@ if [ -d "$TEMP_PATH" ]; then
 	cd $TEMP_PATH
 	git fetch -q origin
 	git clean -f -d -q
-	git reset --hard -q origin/$BRANCH_NAME
-	cd - >/dev/null
 else
 	echo "--> Installing SilverStripe Framework Boilerplate"
 
 	git clone -q git@github.com:wilr/silverstripe-framework-app-boilerplate.git $TEMP_PATH
 	cd $TEMP_PATH
-	git reset --hard origin/$BRANCH_NAME
 fi
 
+git reset --hard -q origin/$BRANCH_NAME
+cd - >/dev/null
+
 echo "--> Linking SilverStripe Boilerplate"
+
+if [[ "$INSTALL_PATH" == \~*/* || "$INSTALL_PATH" == \~ || "$INSTALL_PATH" == \~/* || "$INSTALL_PATH" == \~/ ]]; then
+	INSTALL_PATH="${HOME}${INSTALL_PATH:1:${#INSTALL_PATH}}"
+fi
+
 cp -R $TEMP_PATH $INSTALL_PATH
 
 
