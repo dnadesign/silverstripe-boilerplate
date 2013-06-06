@@ -10,9 +10,9 @@ class AppController extends Controller {
 	 * Handle 404 errors gracefully as the normal 404 error pages are part
 	 * of the CMS module
 	 */
-	public function handleAction($request) {
+	public function handleAction($request, $action) {
 		try {
-			$response = parent::handleAction($request);
+			$response = parent::handleAction($request, $action);
 
 			return $response;
 		}
