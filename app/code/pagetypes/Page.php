@@ -36,6 +36,6 @@ class Page_Controller extends ContentController {
 		Requirements::combine_files('app.js', array(
 			'framework/thirdparty/jquery/jquery.js',
 			'app/js/app.js'
-		);
+		));
 	}
 }
