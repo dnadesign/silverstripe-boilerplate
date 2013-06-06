@@ -28,20 +28,18 @@ class AppController extends Controller {
 	/**
 	 * Return a HTTP error to the user
 	 */
-	public function httpError($errorCode = '404', $errorMessage = null) {
-		$this->response->setStatusCode($errorCode);
-		$this->template = array('Error', 'AppController');
-		
-		$result = $this->customise(new ArrayData(array(
+	public function httpError($errorCode = 404, $errorMessage = null) {
+		$template = array('Error', 'BaseController');
+		$result = new ArrayData(array(
 			'Title' => 'Whoops!',
 			'Content' => DBField::create_field('HTMLText', $errorMessage)
-		)));
-		
-		return $result;
+		));
+
+		parent::httpError($errorCode,new SS_HTTPResponse($result->renderWith($template)));
 	}
 
 	public function init() {
-		parenet::init();
+		parent::init();
 
 		Requirements::combine_files('app.css', array(
 			'app/css/normalize.css',
