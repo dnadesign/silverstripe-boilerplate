@@ -31,14 +31,8 @@ if [ -d "$INSTALL_PATH" ]; then
 	exit
 fi
 
-echo "Which boilerplate would you like to use (cms, framework)";
+echo "Which boilerplate template would you like to start with (cms, framework, foundation)";
 read BRANCH_NAME
-
-if [ "$BRANCH_NAME" != "cms" ] && [ "$BRANCH_NAME" != 'framework' ]; then
-	echo "$BRANCH_NAME is not a valid branch"
-
-	exit
-fi
 
 if [ "$BRANCH_NAME" = 'framework' ]; then
 	BRANCH_NAME='master'
@@ -56,6 +50,15 @@ else
 	git clone -q git@github.com:wilr/silverstripe-framework-app-boilerplate.git $TEMP_PATH
 	cd $TEMP_PATH
 fi
+
+
+exists=`git show-ref remotes/origin/$BRANCH_NAME`
+
+if [ ! -n "$exists" ]; then
+	echo "Template $BRANCH_NAME does not exist in the boilerplate. Try cms"
+	exit
+fi
+
 
 git reset --hard -q origin/$BRANCH_NAME
 cd - >/dev/null
