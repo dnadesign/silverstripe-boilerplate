@@ -34,20 +34,26 @@ module). This branch describes basic controller and routing examples.
 
 Includes boilerplate for a basic CMS powered website.
 
+### foundation
+
+Uses the ZURB [Foundation module](https://github.com/ryanwachtl/silverstripe-foundation) 
+and the Foundation Forms module from Ryan Wachtl to provide a bootstrap of 
+prototype design styles.
+
 ## Discussion
 
 ### app instead of 'mysite'
 
-Shorter, cleaner, betterer.
+Shorter, cleaner, betterer than mysite.
 
 ### No themes folder.
 
-We prefer not to use the `themes` directory. Keeping templates all in app allows
-me to reduce the amount of root folders as well as keep projects tidier. 
+Some branches (cms, framework) do not use a `themes` directory. We prefer not to 
+use the `themes` directory as keeping templates all in app allows me to reduce 
+the amount of root folders as well as keep projects tidier. 
 
 Since most framework only apps won't be using different themes, it seems 
 redundant to separate templates like that.
-
 
 ## Recommended Modules
 
