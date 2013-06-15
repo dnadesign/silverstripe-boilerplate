@@ -4,3 +4,5 @@ After: "*"
 ---
 Email:
   admin_email: youremail@site.com
+SSViewer:
+  theme: foundation

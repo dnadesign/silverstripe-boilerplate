@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6985e8d859635ea939baad4b3c869fbc",
+    "hash": "4c7ae0eb3c571f9c271cf4a4a65778f3",
     "packages": [
         {
             "name": "composer/installers",
@@ -78,17 +78,99 @@
             "time": "2013-03-02 22:45:58"
         },
         {
+            "name": "rywa/silverstripe-foundation",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ryanwachtl/silverstripe-foundation.git",
+                "reference": "373b9b00629e93ede18ccaea24e9ae3b3a3890d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ryanwachtl/silverstripe-foundation/zipball/373b9b00629e93ede18ccaea24e9ae3b3a3890d6",
+                "reference": "373b9b00629e93ede18ccaea24e9ae3b3a3890d6",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "*",
+                "silverstripe/framework": ">=3.0"
+            },
+            "type": "silverstripe-theme",
+            "extra": {
+                "installer-name": "foundation"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT Open Source License"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Wachtl",
+                    "homepage": "http://ryanwachtl.com"
+                }
+            ],
+            "description": "SilverStripe prototyping theme based on Zurb Foundation",
+            "keywords": [
+                "foundation",
+                "prototyping",
+                "silverstripe",
+                "theme",
+                "zurbfoundation"
+            ],
+            "time": "2013-06-15 02:15:01"
+        },
+        {
+            "name": "rywa/silverstripe-foundation-forms",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ryanwachtl/silverstripe-foundation-forms.git",
+                "reference": "9980a6c0374a265822fa361433907b459a68cb3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ryanwachtl/silverstripe-foundation-forms/zipball/9980a6c0374a265822fa361433907b459a68cb3b",
+                "reference": "9980a6c0374a265822fa361433907b459a68cb3b",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "*",
+                "silverstripe/framework": ">=3.0"
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "installer-name": "foundationforms"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT Open Source License"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Wachtl",
+                    "homepage": "http://ryanwachtl.com"
+                }
+            ],
+            "description": "SilverStripe 3 Forms Compatible with Zurb Foundation Framework",
+            "keywords": [
+                "Forms",
+                "silverstripe",
+                "zurbfoundation"
+            ],
+            "time": "2013-06-11 15:36:50"
+        },
+        {
             "name": "silverstripe/cms",
             "version": "3.1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-cms.git",
-                "reference": "df1836add2cb794e0bd71c00939d28ddd890f581"
+                "reference": "4bc942df7619fcf02d067f2fb291ccb48587506f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/df1836add2cb794e0bd71c00939d28ddd890f581",
-                "reference": "df1836add2cb794e0bd71c00939d28ddd890f581",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-cms/zipball/4bc942df7619fcf02d067f2fb291ccb48587506f",
+                "reference": "4bc942df7619fcf02d067f2fb291ccb48587506f",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +204,7 @@
                 "cms",
                 "silverstripe"
             ],
-            "time": "2013-06-05 12:39:21"
+            "time": "2013-06-11 07:01:00"
         },
         {
             "name": "silverstripe/framework",
@@ -130,12 +212,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/silverstripe-framework.git",
-                "reference": "7791f20f4957ecc2db1ce8fd7a8812e692d08115"
+                "reference": "8fca3799c355a5bd3da8e6abcfa0bc8ce84ece52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/7791f20f4957ecc2db1ce8fd7a8812e692d08115",
-                "reference": "7791f20f4957ecc2db1ce8fd7a8812e692d08115",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-framework/zipball/8fca3799c355a5bd3da8e6abcfa0bc8ce84ece52",
+                "reference": "8fca3799c355a5bd3da8e6abcfa0bc8ce84ece52",
                 "shasum": ""
             },
             "require": {
@@ -168,7 +250,7 @@
                 "framework",
                 "silverstripe"
             ],
-            "time": "2013-06-05 13:17:06"
+            "time": "2013-06-15 00:06:25"
         }
     ],
     "packages-dev": [
@@ -180,7 +262,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "silverstripe/framework": 20,
-        "silverstripe/cms": 20
+        "silverstripe/cms": 20,
+        "rywa/silverstripe-foundation": 20,
+        "rywa/silverstripe-foundation-forms": 20
     },
     "platform": [
 
