@@ -4,4 +4,4 @@ After: "*"
 ---
 Director:
     rules:
-        '/' : 'HomeController'
+        '' : 'HomeController'
