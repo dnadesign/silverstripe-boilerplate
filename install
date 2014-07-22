@@ -90,4 +90,113 @@ else
 	echo "--> Error installing SilverStripe Boilerplate"
 fi
 
+# 
+# Setup the DNA boilerplate.
+#
+# This pulls it the github version, copies the information it needs from the
+# existing app directory then replaces that the boilerplate.
+#
+echo "--> Adding DNA Boilerplate"
+git clone -q https://github.com/dnadesign/dna_frontend_boilerplate.git $TEMP_PATH/dna 
+
+# Copy assests in
+cp -R $INSTALL_PATH/app/templates $TEMP_PATH/dna/templates
+cp -R $INSTALL_PATH/app/code $TEMP_PATH/dna/code
+cp -R $INSTALL_PATH/app/_config $TEMP_PATH/dna/_config
+cp -R $INSTALL_PATH/app/tests $TEMP_PATH/dna/_config
+cp -R $INSTALL_PATH/app/_config.php $TEMP_PATH/dna/_config.php
+
+# Replace contents of the files with the correct DNA front end paths.
+if [ "$BRANCH_NAME" = 'master' ]; then
+	cat > $TEMP_PATH/dna/code/controllers/AppController.php <<'endmsg'
+<?php
+
+/**
+ * @package {@packagename}
+ * @subpackage controllers
+ */
+class AppController extends Controller {
+
+	/**
+	 * Handle 404 errors gracefully as the normal 404 error pages are part
+	 * of the CMS module
+	 */
+	public function handleAction($request, $action) {
+		try {
+			$response = parent::handleAction($request, $action);
+
+			return $response;
+		}
+		catch(SS_HTTPResponse_Exception $e) {
+			$response = $e->getResponse();
+			$response->addHeader('Content-Type', 'text/html; charset=utf-8');
+			$response->setBody($this->renderWith(array('Error', 'AppController')));
+
+			return $response;
+		}
+	}
+
+	/**
+	 * Return a HTTP error to the user
+	 */
+	public function httpError($errorCode = 404, $errorMessage = null) {
+		$template = array('Error', 'BaseController');
+		$result = new ArrayData(array(
+			'Title' => 'Whoops!',
+			'Content' => DBField::create_field('HTMLText', $errorMessage)
+		));
+
+		parent::httpError($errorCode,new SS_HTTPResponse($result->renderWith($template)));
+	}
+
+	public function init() {
+		parent::init();
+
+		Requirements::css('app/css/dist/production.css');
+		Requirements::javascript('app/js/site.src.js');
+	}
+}
+endmsg
+else
+	cat > $TEMP_PATH/dna/code/pagetypes/Page.php <<'endmsg'
+<?php
+
+/**
+ * @package {@packagename}
+ * @subpackage pagetypes
+ */
+class Page extends SiteTree {
+	
+	private static $db = array(
+
+	);
+
+	private static $has_one = array(
+
+	);
+}
+
+/**
+ * @package {@packagename}
+ * @subpackage controller
+ */
+class Page_Controller extends ContentController {
+	
+	private static $allowed_actions = array(
+
+	);
+
+	public function init() {
+		parent::init();
+
+		Requirements::css('app/css/dist/production.css');
+		Requirements::javascript('app/js/site.src.js');
+	}
+}
+endmsg
+fi
+# Remove existing app and move this back in
+rm -rf $INSTALL_PATH/app/
+mv $TEMP_PATH/dna $INSTALL_PATH/app
+
 echo "--> Done."
