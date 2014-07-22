@@ -2,6 +2,7 @@
 .settings
 bin
 .metadata
+node_modules
 /assets
 /framework
 /vendor
