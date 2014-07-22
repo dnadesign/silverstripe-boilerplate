@@ -15,8 +15,8 @@ boilerplate template to start from.
 To start a new project on the boilerplate run the following from your terminal
 (unix only) for the automatic install:
 	
-	bash <(curl -s https://raw.github.com/fullscreeninteractive/silverstripe-boilerplate/master/install)
-
+	bash <(curl -s https://raw.githubusercontent.com/fullscreeninteractive/silverstripe-boilerplate/master/install)
+	
 Or you can install manually by performing the steps below:
 
 	git clone git@github.com:fullscreeninteractive/silverstripe-boilerplate.git my_app
